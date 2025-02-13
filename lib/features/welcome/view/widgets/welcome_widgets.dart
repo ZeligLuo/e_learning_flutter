@@ -1,6 +1,8 @@
 import 'package:e_learning_app/common/utils/app_color.dart';
+import 'package:e_learning_app/common/utils/constants.dart';
 import 'package:e_learning_app/common/widgets/app_shadow.dart';
 import 'package:e_learning_app/common/widgets/text_widgets.dart';
+import 'package:e_learning_app/global.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -36,6 +38,10 @@ Widget _nextButton(int index, PageController controller, BuildContext context) {
         controller.animateToPage(index,
             duration: const Duration(microseconds: 500), curve: Curves.linear);
       } else {
+        // remember if first time open app or not
+        Global.storageService
+            .setBool(AppConstants.STORAGE_DEVICE_OPEN_FIRST_KEY, true);
+
         Navigator.pushNamed(
           context,
           '/signIn',
@@ -49,7 +55,8 @@ Widget _nextButton(int index, PageController controller, BuildContext context) {
       decoration: appBoxShadow(),
       child: Center(
           child: text16Normal(
-              text: index<3?'Next':'Get Started', color: AppColors.primaryElementText)),
+              text: index < 3 ? 'Next' : 'Get Started',
+              color: AppColors.primaryElementText)),
     ),
   );
 }

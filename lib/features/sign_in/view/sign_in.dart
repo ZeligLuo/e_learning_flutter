@@ -1,12 +1,13 @@
 import 'package:e_learning_app/common/global_loader/global_loader.dart';
 import 'package:e_learning_app/common/utils/app_color.dart';
+import 'package:e_learning_app/common/utils/image_resources.dart';
 import 'package:e_learning_app/common/widgets/app_bar.dart';
 import 'package:e_learning_app/common/widgets/app_text_fields.dart';
 import 'package:e_learning_app/common/widgets/button_widgets.dart';
 import 'package:e_learning_app/common/widgets/text_widgets.dart';
-import 'package:e_learning_app/pages/sign_in/notifier/sign_in_notifier.dart';
-import 'package:e_learning_app/pages/sign_in/sign_in_controller.dart';
-import 'package:e_learning_app/pages/sign_in/widgets/sign_in_widgets.dart';
+import 'package:e_learning_app/features/sign_in/controller/sign_in_controller.dart';
+import 'package:e_learning_app/features/sign_in/provider/sign_in_notifier.dart';
+import 'package:e_learning_app/features/sign_in/view/widgets/sign_in_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -55,7 +56,7 @@ class _SignInState extends ConsumerState<SignIn> {
                   appTextField(
                     controller: _controller.emailController,
                       text: 'Email',
-                      iconName: 'assets/icons/user.png',
+                      iconName: ImageResources.userIcon,
                       hintText: 'Enter your email',
                       func: (value) => ref
                           .read(signInNotifierProvider.notifier)
@@ -67,7 +68,7 @@ class _SignInState extends ConsumerState<SignIn> {
                   appTextField(
                       controller: _controller.passwordController,
                       text: 'Password',
-                      iconName: 'assets/icons/lock.png',
+                      iconName: ImageResources.lockIcon,
                       hintText: 'Enter your password',
                       obscureText: true,
                       func: (value) => ref

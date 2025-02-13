@@ -1,10 +1,11 @@
 import 'package:dots_indicator/dots_indicator.dart';
-import 'package:e_learning_app/pages/welcome/welcome_widgets.dart';
+import 'package:e_learning_app/features/welcome/provider/welcome_notifier.dart';
+import 'package:e_learning_app/features/welcome/view/widgets/welcome_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'notifier/welcome_notifier.dart';
+import 'package:e_learning_app/features/welcome/provider/welcome_notifier.dart';
 
 final indexProvider = StateProvider<int>((ref) => 0);
 

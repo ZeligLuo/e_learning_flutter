@@ -2,8 +2,9 @@ import 'package:e_learning_app/common/entities/entities.dart';
 import 'package:e_learning_app/common/global_loader/global_loader.dart';
 import 'package:e_learning_app/common/utils/constants.dart';
 import 'package:e_learning_app/common/widgets/popup_messages.dart';
+import 'package:e_learning_app/features/sign_in/provider/sign_in_notifier.dart';
+import 'package:e_learning_app/features/sign_in/repo/sign_in_repo.dart';
 import 'package:e_learning_app/global.dart';
-import 'package:e_learning_app/pages/sign_in/notifier/sign_in_notifier.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
@@ -39,8 +40,7 @@ class SignInController {
 
     ref.read(appLoaderProvider.notifier).setLoaderValue(true);
     try {
-      final credential = await FirebaseAuth.instance
-          .signInWithEmailAndPassword(email: email, password: password);
+      final credential = await SignInRepo.firebaseSignIn(email, password);
 
       if (credential.user == null) {
         toastInfo('User not found!');
@@ -96,12 +96,13 @@ class SignInController {
       Global.storageService
           .setString(AppConstants.STORAGE_USER_TOKEN_KEY, "123456");
 
-      // navigator.pushNamedAndRemoveUntil(newRouteName, (route) => false);
-      navigator.push(MaterialPageRoute(
-          builder: (BuildContext context) => Scaffold(
-                appBar: AppBar(),
-                body: Container(),
-              )));
+      navigator.pushNamedAndRemoveUntil("/application", (route) => false);
+      // navigator.push(MaterialPageRoute(
+      //     builder: (BuildContext context) => Scaffold(
+      //           appBar: AppBar(),
+      //           body: const Application(),
+      //         )));
+      // navigator.pushNamed("/application");
     } catch (e) {
       if (kDebugMode) {
         print(e.toString());

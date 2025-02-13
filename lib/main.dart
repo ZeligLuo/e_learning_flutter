@@ -1,17 +1,22 @@
+import 'package:e_learning_app/common/routes/routes.dart';
 import 'package:e_learning_app/common/utils/app_styles.dart';
 import 'package:e_learning_app/global.dart';
-import 'package:e_learning_app/pages/sign_in/sign_in.dart';
-import 'package:e_learning_app/pages/sign_up/sign_up.dart';
-import 'package:e_learning_app/pages/welcome/welcome_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 Future<void> main() async {
-  Global.init();
+  await Global.init();
 
   runApp(const ProviderScope(child: MyApp()));
 }
+
+// var routesMap = {
+//   '/': (context) => Welcome(),
+//   '/signIn': (context) => const SignIn(),
+//   '/register': (context) => const SignUp(),
+//   '/application': (context) => const Application()
+// };
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -26,11 +31,8 @@ class MyApp extends StatelessWidget {
           title: 'E-Learner',
           theme: AppTheme.appThemeData,
           initialRoute: '/',
-          routes: {
-            '/': (context) => Welcome(),
-            '/signIn': (context) => const SignIn(),
-            '/register': (context) => const SignUp()
-          },
+          // routes: routesMap,
+          onGenerateRoute: AppPages.generateRouteSettings,
           // home: Welcome(),
         )
     );
