@@ -1,10 +1,33 @@
 import 'package:e_learning_app/common/utils/app_color.dart';
 import 'package:e_learning_app/common/utils/constants.dart';
-import 'package:e_learning_app/common/widgets/app_shadow.dart';
+import 'package:e_learning_app/common/widgets/app_box_decoration.dart';
 import 'package:e_learning_app/common/widgets/text_widgets.dart';
 import 'package:e_learning_app/global.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+class AppOnBoardingPage extends StatelessWidget {
+  final PageController controller;
+  final String imagePath;
+  final String title;
+  final String subtitle;
+  final int index;
+  final BuildContext context;
+
+  const AppOnBoardingPage(
+      {super.key,
+      required this.controller,
+      required this.imagePath,
+      required this.title,
+      required this.subtitle,
+      required this.index,
+      required this.context});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Placeholder();
+  }
+}
 
 Widget appOnBoardingPage(PageController controller,
     {required String imagePath,
@@ -52,7 +75,7 @@ Widget _nextButton(int index, PageController controller, BuildContext context) {
       width: 325,
       height: 50,
       margin: const EdgeInsets.only(top: 100, left: 25, right: 25),
-      decoration: appBoxShadow(),
+      decoration: appBoxDecoration(),
       child: Center(
           child: text16Normal(
               text: index < 3 ? 'Next' : 'Get Started',

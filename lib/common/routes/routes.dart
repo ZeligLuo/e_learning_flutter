@@ -1,10 +1,10 @@
 import 'package:e_learning_app/common/routes/app_routes_name.dart';
 import 'package:e_learning_app/features/application/view/application.dart';
+import 'package:e_learning_app/features/home/view/home.dart';
 import 'package:e_learning_app/features/sign_in/view/sign_in.dart';
 import 'package:e_learning_app/features/sign_up/view/sign_up.dart';
 import 'package:e_learning_app/features/welcome/view/welcome_page.dart';
 import 'package:e_learning_app/global.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class AppPages {
@@ -13,14 +13,15 @@ class AppPages {
       RouteEntity(path: AppRoutesName.WELCOME, page: Welcome()),
       RouteEntity(path: AppRoutesName.SIGN_IN, page: const SignIn()),
       RouteEntity(path: AppRoutesName.REGISTER, page: const SignUp()),
-      RouteEntity(path: AppRoutesName.APPLICATION, page: const Application())
+      RouteEntity(path: AppRoutesName.APPLICATION, page: const Application()),
+      RouteEntity(path: AppRoutesName.HOME, page: const Home())
     ];
   }
 
   static MaterialPageRoute generateRouteSettings(RouteSettings settings) {
-    if (kDebugMode) {
-      print("Current route: ${settings.name}");
-    }
+    // if (kDebugMode) {
+    //   print("Current route: ${settings.name}");
+    // }
 
     if(settings.name != null) {
       var result = routes().where((element) => element.path == settings.name);
@@ -45,9 +46,9 @@ class AppPages {
           //     builder: (_) => const SignIn(),
           //     settings: settings);
         } else {
-          if (kDebugMode) {
-            print("App run first time!");
-          }
+          // if (kDebugMode) {
+          //   print("App run first time!");
+          // }
           return MaterialPageRoute(
               builder: (_) => result.first.page,
               settings: settings);

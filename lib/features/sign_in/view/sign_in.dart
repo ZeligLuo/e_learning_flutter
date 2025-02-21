@@ -22,11 +22,18 @@ class SignIn extends ConsumerStatefulWidget {
 class _SignInState extends ConsumerState<SignIn> {
   late SignInController _controller;
 
-  @override
-  void initState() {
-    _controller = SignInController(ref: ref);
+  // @override
+  // void initState() {
+  //   _controller = SignInController();
+  //
+  //   super.initState();
+  // }
 
-    super.initState();
+  @override
+  void didChangeDependencies() {
+    _controller = SignInController();
+
+    super.didChangeDependencies();
   }
 
   @override
@@ -84,7 +91,7 @@ class _SignInState extends ConsumerState<SignIn> {
                   Center(
                       child: appButton(
                           buttonName: 'Login',
-                          func: () => _controller.handleSignIn())),
+                          func: () => _controller.handleSignIn(ref))),
                   SizedBox(height: 20.h),
                   // register btn
                   Center(

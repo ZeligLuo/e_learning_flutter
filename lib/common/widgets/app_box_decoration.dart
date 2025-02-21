@@ -1,18 +1,17 @@
 import 'package:e_learning_app/common/utils/app_color.dart';
-import 'package:e_learning_app/common/widgets/app_text_fields.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-BoxDecoration appBoxShadow(
+BoxDecoration appBoxDecoration(
     {Color color = AppColors.primaryElement,
     double radius = 15,
     double sR = 1,
     double bR = 2,
-    BoxBorder? border}) {
+    BoxBorder? boxBorder}) {
   return BoxDecoration(
       color: color,
       borderRadius: BorderRadius.circular(radius),
-      border: border,
+      border: boxBorder,
       boxShadow: [
         BoxShadow(
             color: Colors.grey.withOpacity(0.5),
@@ -22,7 +21,7 @@ BoxDecoration appBoxShadow(
       ]);
 }
 
-BoxDecoration appBoxShadowWithRadiusTop(
+BoxDecoration appBoxDecorationWithRadius(
     {Color color = AppColors.primaryElement,
       double radius = 15,
       double sR = 1,

@@ -1,10 +1,12 @@
-import 'package:e_learning_app/common/entities/entities.dart';
+import 'dart:convert';
 import 'package:e_learning_app/common/global_loader/global_loader.dart';
+import 'package:e_learning_app/common/models/user.dart';
 import 'package:e_learning_app/common/utils/constants.dart';
 import 'package:e_learning_app/common/widgets/popup_messages.dart';
 import 'package:e_learning_app/features/sign_in/provider/sign_in_notifier.dart';
 import 'package:e_learning_app/features/sign_in/repo/sign_in_repo.dart';
 import 'package:e_learning_app/global.dart';
+import 'package:e_learning_app/main.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
@@ -12,14 +14,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class SignInController {
-  WidgetRef ref;
+  // WidgetRef ref;
 
-  SignInController({required this.ref});
+  SignInController();
 
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
-  Future<void> handleSignIn() async {
+  Future<void> handleSignIn(WidgetRef ref) async {
     var state = ref.read(signInNotifierProvider);
 
     String email = state.email;
@@ -89,14 +91,16 @@ class SignInController {
 
     // local storage
     try {
-      var navigator = Navigator.of(ref.context);
+      // var navigator = Navigator.of(ref.context);
       // save user info
       Global.storageService
-          .setString(AppConstants.STORAGE_USER_PROFILE_KEY, "123");
+          .setString(AppConstants.STORAGE_USER_PROFILE_KEY, jsonEncode({
+        "name": "user_name", "email": "user_mail@gmail.com", "age": 27
+      }));
       Global.storageService
           .setString(AppConstants.STORAGE_USER_TOKEN_KEY, "123456");
 
-      navigator.pushNamedAndRemoveUntil("/application", (route) => false);
+      navKey.currentState?.pushNamedAndRemoveUntil("/application", (route) => false);
       // navigator.push(MaterialPageRoute(
       //     builder: (BuildContext context) => Scaffold(
       //           appBar: AppBar(),

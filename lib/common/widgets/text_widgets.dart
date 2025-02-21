@@ -3,12 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 Widget text24Normal(
-    {required String text, Color color = AppColors.primaryText}) {
+    {required String text,
+    Color color = AppColors.primaryText,
+    FontWeight fontWeight = FontWeight.normal}) {
   return Text(
     text,
     textAlign: TextAlign.center,
     style:
-        TextStyle(color: color, fontSize: 24.sp, fontWeight: FontWeight.normal),
+        TextStyle(color: color, fontSize: 24.sp, fontWeight: fontWeight),
   );
 }
 

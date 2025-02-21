@@ -11,6 +11,8 @@ Future<void> main() async {
   runApp(const ProviderScope(child: MyApp()));
 }
 
+final GlobalKey<NavigatorState> navKey = GlobalKey<NavigatorState>();
+
 // var routesMap = {
 //   '/': (context) => Welcome(),
 //   '/signIn': (context) => const SignIn(),
@@ -28,9 +30,10 @@ class MyApp extends StatelessWidget {
       designSize: const Size(375, 812),
       builder: (context, child)
         => MaterialApp(
+          navigatorKey: navKey,
           title: 'E-Learner',
           theme: AppTheme.appThemeData,
-          initialRoute: '/',
+          // initialRoute: '/',
           // routes: routesMap,
           onGenerateRoute: AppPages.generateRouteSettings,
           // home: Welcome(),

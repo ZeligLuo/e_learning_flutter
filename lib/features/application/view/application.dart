@@ -1,6 +1,5 @@
 import 'package:e_learning_app/common/utils/app_color.dart';
-import 'package:e_learning_app/common/widgets/app_bar.dart';
-import 'package:e_learning_app/common/widgets/app_shadow.dart';
+import 'package:e_learning_app/common/widgets/app_box_decoration.dart';
 import 'package:e_learning_app/features/application/provider/application_nav_notifier.dart';
 import 'package:e_learning_app/features/application/view/widgets/application_widgets.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +21,7 @@ class Application extends ConsumerWidget {
             bottomNavigationBar: Container(
               width: 375.w,
               height: 58.h,
-              decoration: appBoxShadowWithRadiusTop(),
+              decoration: appBoxDecorationWithRadius(),
               child: BottomNavigationBar(
                 currentIndex: index,
                 onTap: (value) {
