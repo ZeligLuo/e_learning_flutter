@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 AppBar buildAppbar({String title=''}) {
   return AppBar(
-    title: text16Normal(text: title, color: AppColors.primaryText),
+    title: TextNormal(text: title, color: AppColors.primaryText, fontSize: 16),
     bottom:
     /* put space under appbar for widget */
     PreferredSize(

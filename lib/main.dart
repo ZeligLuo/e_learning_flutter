@@ -1,4 +1,5 @@
 import 'package:e_learning_app/common/routes/routes.dart';
+import 'package:e_learning_app/common/services/http_util.dart';
 import 'package:e_learning_app/common/utils/app_styles.dart';
 import 'package:e_learning_app/global.dart';
 import 'package:flutter/material.dart';
@@ -6,6 +7,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 Future<void> main() async {
+
   await Global.init();
 
   runApp(const ProviderScope(child: MyApp()));

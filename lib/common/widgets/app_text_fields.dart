@@ -17,7 +17,7 @@ Widget appTextField(
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        text14Normal(text: text),
+        TextNormal(text: text),
         SizedBox(height: 5.h),
         Container(
           width: 325.w,

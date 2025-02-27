@@ -21,11 +21,11 @@ Widget appButton(
               isLogin ? AppColors.primaryElement : AppColors.primaryBackground,
           boxBorder: Border.all(color: AppColors.primaryFourthElementText)),
       child: Center(
-          child: text16Normal(
-              text: buttonName,
-              color: isLogin
-                  ? AppColors.primaryBackground
-                  : AppColors.primaryText)),
+          child: TextNormal(
+        text: buttonName,
+        color: isLogin ? AppColors.primaryBackground : AppColors.primaryText,
+        fontSize: 16,
+      )),
     ),
   );
 }

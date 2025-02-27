@@ -1,5 +1,5 @@
 import 'package:e_learning_app/common/utils/app_color.dart';
-import 'package:e_learning_app/common/utils/constants.dart';
+import 'package:e_learning_app/common/utils/app_constants.dart';
 import 'package:e_learning_app/common/widgets/app_box_decoration.dart';
 import 'package:e_learning_app/common/widgets/text_widgets.dart';
 import 'package:e_learning_app/global.dart';
@@ -25,33 +25,24 @@ class AppOnBoardingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Column(
+      children: [
+        Image.asset(
+          imagePath,
+          fit: BoxFit.fitWidth,
+        ),
+        Container(
+            margin: const EdgeInsets.only(top: 15),
+            child: TextNormal(text: title, color: AppColors.primarySecondaryElementText,fontSize: 24)),
+        Container(
+          margin: EdgeInsets.only(top: 15.h),
+          padding: EdgeInsets.only(left: 30.w, right: 30.w),
+          child: TextNormal(text: subtitle, color: AppColors.primarySecondaryElementText, fontSize: 16),
+        ),
+        _nextButton(index, controller, context)
+      ],
+    );
   }
-}
-
-Widget appOnBoardingPage(PageController controller,
-    {required String imagePath,
-    required String title,
-    required String subtitle,
-    index = 0,
-    required BuildContext context}) {
-  return Column(
-    children: [
-      Image.asset(
-        imagePath,
-        fit: BoxFit.fitWidth,
-      ),
-      Container(
-          margin: const EdgeInsets.only(top: 15),
-          child: text24Normal(text: title)),
-      Container(
-        margin: EdgeInsets.only(top: 15.h),
-        padding: EdgeInsets.only(left: 30.w, right: 30.w),
-        child: text16Normal(text: subtitle),
-      ),
-      _nextButton(index, controller, context)
-    ],
-  );
 }
 
 Widget _nextButton(int index, PageController controller, BuildContext context) {
@@ -77,9 +68,10 @@ Widget _nextButton(int index, PageController controller, BuildContext context) {
       margin: const EdgeInsets.only(top: 100, left: 25, right: 25),
       decoration: appBoxDecoration(),
       child: Center(
-          child: text16Normal(
+          child: TextNormal(
               text: index < 3 ? 'Next' : 'Get Started',
-              color: AppColors.primaryElementText)),
+              color: AppColors.primaryElementText,
+              fontSize: 16)),
     ),
   );
 }

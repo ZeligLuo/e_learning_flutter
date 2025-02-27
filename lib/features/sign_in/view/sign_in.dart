@@ -54,8 +54,10 @@ class _SignInState extends ConsumerState<SignIn> {
                   // login options
                   thirdPartyLogin(),
                   Center(
-                      child: text16Normal(
-                          text: 'Or use your email account to login')),
+                      child: TextNormal(
+                          text: 'Or use your email account to login',
+                          color: AppColors.primarySecondaryElementText,
+                          fontSize: 16)),
                   SizedBox(
                     height: 50.h,
                   ),

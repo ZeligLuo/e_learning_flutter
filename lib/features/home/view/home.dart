@@ -1,4 +1,5 @@
 import 'package:e_learning_app/common/widgets/app_bar.dart';
+import 'package:e_learning_app/common/widgets/image_widgets.dart';
 import 'package:e_learning_app/common/widgets/search_widgets.dart';
 import 'package:e_learning_app/features/home/controller/home_controller.dart';
 import 'package:e_learning_app/features/home/view/widgets/home_widgets.dart';
@@ -18,7 +19,8 @@ class _HomeState extends ConsumerState<Home> {
 
   @override
   void didChangeDependencies() {
-    _controller = PageController(initialPage: ref.watch(homeScreenBannerDotsProvider));
+    _controller =
+        PageController(initialPage: ref.watch(homeScreenBannerDotsProvider));
 
     super.didChangeDependencies();
   }
@@ -26,7 +28,8 @@ class _HomeState extends ConsumerState<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppbar(title: "Home"),
+      backgroundColor: Colors.white,
+      appBar: homeAppBar(),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 25.w),
         child: SingleChildScrollView(
@@ -34,12 +37,35 @@ class _HomeState extends ConsumerState<Home> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              SizedBox(height: 20.h),
               const HelloText(),
               const UserName(),
               SizedBox(height: 20.h),
               searchBar(),
               SizedBox(height: 20.h),
-              HomeBanner(controller: _controller, ref: ref)
+              HomeBanner(controller: _controller, ref: ref),
+              const HomeMenuBar(),
+              // CustomScrollView(
+              //   physics: const ScrollPhysics(),
+              //   shrinkWrap: true,
+              //   slivers: [
+              //     SliverPadding(
+              //       padding: EdgeInsets.all(20),
+              //       sliver: SliverGrid.count(
+              //         crossAxisCount: 2,
+              //         crossAxisSpacing: 10,
+              //         children: [
+              //           Text("data"),
+              //           Text("data"),
+              //           Text("data"),
+              //           Text("data"),
+              //           Text("data")
+              //         ],
+              //       ),
+              //     )
+              //   ],
+              // )
+              const CourseItemGrid()
             ],
           ),
         ),

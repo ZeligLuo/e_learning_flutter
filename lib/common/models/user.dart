@@ -7,7 +7,7 @@ class LoginRequestEntity {
   String? email;
   String? phone;
   String? avatar;
-  String? openId;
+  String? open_id;
   int? online;
 
   LoginRequestEntity({
@@ -17,20 +17,22 @@ class LoginRequestEntity {
     this.email,
     this.phone,
     this.avatar,
-    this.openId,
+    this.open_id,
     this.online,
   });
 
-  Map<String, dynamic> toJson() => {
-    "type": type,
-    "name": name,
-    "description": description,
-    "email": email,
-    "phone": phone,
-    "avatar": avatar,
-    "open_id": openId,
-    "online": online,
-  };
+  Map<String, dynamic> toJson() {
+    return {
+      "type": type,
+      "name": name,
+      "description": description,
+      "email": email,
+      "phone": phone,
+      "avatar": avatar,
+      "open_id": open_id,
+      "online": online,
+    };
+  }
 }
 //api post response msg
 class UserLoginResponseEntity {
@@ -44,18 +46,20 @@ class UserLoginResponseEntity {
     this.data,
   });
 
-  factory UserLoginResponseEntity.fromJson(Map<String, dynamic> json) =>
-      UserLoginResponseEntity(
-        code: json["code"],
-        msg: json["msg"],
-        data: UserProfile.fromJson(json["data"]),
-      );
+  factory UserLoginResponseEntity.fromJson(Map<String, dynamic> json) {
+    return UserLoginResponseEntity(
+      code: json["code"],
+      msg: json["msg"],
+      data: UserProfile.fromJson(json["data"]),
+    );
+  }
+
 }
 
 
 // login result
 class UserProfile {
-  String? accessToken;
+  String? access_token;
   String? token;
   String? name;
   String? description;
@@ -64,7 +68,7 @@ class UserProfile {
   int? type;
 
   UserProfile({
-    this.accessToken,
+    this.access_token,
     this.token,
     this.name,
     this.description,
@@ -73,26 +77,29 @@ class UserProfile {
     this.type,
   });
 
-  factory UserProfile.fromJson(Map<String, dynamic> json) =>
-      UserProfile(
-        accessToken: json["access_token"],
-        token: json["token"],
-        name: json["name"],
-        description: json["description"],
-        avatar: json["avatar"],
-        online: json["online"],
-        type: json["type"],
-      );
+  factory UserProfile.fromJson(Map<String, dynamic> json) {
+    return UserProfile(
+      access_token: json["access_token"],
+      token: json["token"],
+      name: json["name"],
+      description: json["description"],
+      avatar: json["avatar"],
+      online: json["online"],
+      type: json["type"],
+    );
+  }
 
-  Map<String, dynamic> toJson() => {
-    "access_token": accessToken,
-    "token": token,
-    "name": name,
-    "description": description,
-    "avatar": avatar,
-    "online": online,
-    "type": type,
-  };
+  Map<String, dynamic> toJson() {
+    return {
+      "access_token": access_token,
+      "token": token,
+      "name": name,
+      "description": description,
+      "avatar": avatar,
+      "online": online,
+      "type": type,
+    };
+  }
 }
 
 class UserData {

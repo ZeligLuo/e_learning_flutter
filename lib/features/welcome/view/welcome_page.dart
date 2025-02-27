@@ -1,4 +1,5 @@
 import 'package:dots_indicator/dots_indicator.dart';
+import 'package:e_learning_app/common/utils/image_resources.dart';
 import 'package:e_learning_app/features/welcome/provider/welcome_notifier.dart';
 import 'package:e_learning_app/features/welcome/view/widgets/welcome_widgets.dart';
 import 'package:flutter/material.dart';
@@ -34,21 +35,21 @@ class Welcome extends ConsumerWidget {
                   scrollDirection: Axis.horizontal,
                   children: [
                     AppOnBoardingPage(controller: _controller,
-                        imagePath: "assets/images/reading.png",
+                        imagePath: ImageResources.reading,
                         title: "First See Learning",
                         subtitle:
                             "Forget about the paper, now learning all in one place.",
                         index: 1,
                         context: context),
                     AppOnBoardingPage(controller: _controller,
-                        imagePath: "assets/images/man.png",
+                        imagePath: ImageResources.man,
                         title: "Connect With Everyone",
                         subtitle:
                             "Always keep in touch with your tutor and friends. Let's get connected.",
                         index: 2,
                         context: context),
                     AppOnBoardingPage(controller: _controller,
-                        imagePath: "assets/images/boy.png",
+                        imagePath: ImageResources.boy,
                         title: "Always Fascinated Learning",
                         subtitle:
                             "Anywhere, anytime. The time is at your discretion. So study wherever you can.",

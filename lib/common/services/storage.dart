@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:e_learning_app/common/models/entities.dart';
-import 'package:e_learning_app/common/utils/constants.dart';
+import 'package:e_learning_app/common/utils/app_constants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class StorageService {
@@ -18,6 +18,10 @@ class StorageService {
 
   String getString(String key) {
     return _pref.getString(key)??"";
+  }
+
+  String getUserToken() {
+    return _pref.getString(AppConstants.STORAGE_USER_TOKEN_KEY)??"";
   }
 
   Future<bool> setBool(String key, bool value) async {
@@ -39,4 +43,6 @@ class StorageService {
 
     return userProfile;
   }
+
+
 }

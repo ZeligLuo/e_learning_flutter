@@ -1,7 +1,8 @@
 import 'dart:convert';
 import 'package:e_learning_app/common/global_loader/global_loader.dart';
 import 'package:e_learning_app/common/models/user.dart';
-import 'package:e_learning_app/common/utils/constants.dart';
+import 'package:e_learning_app/common/services/http_util.dart';
+import 'package:e_learning_app/common/utils/app_constants.dart';
 import 'package:e_learning_app/common/widgets/popup_messages.dart';
 import 'package:e_learning_app/features/sign_in/provider/sign_in_notifier.dart';
 import 'package:e_learning_app/features/sign_in/repo/sign_in_repo.dart';
@@ -12,6 +13,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class SignInController {
   // WidgetRef ref;
@@ -65,7 +67,7 @@ class SignInController {
         loginRequestEntity.avatar = photoUrl;
         loginRequestEntity.name = displayName;
         loginRequestEntity.email = email;
-        loginRequestEntity.openId = id;
+        loginRequestEntity.open_id = id;
         loginRequestEntity.type = 1;
         asyncPostAllData(loginRequestEntity);
       } else {
@@ -86,33 +88,37 @@ class SignInController {
     ref.read(appLoaderProvider.notifier).setLoaderValue(false);
   }
 
-  void asyncPostAllData(LoginRequestEntity loginRequestEntity) {
+  Future<void> asyncPostAllData(LoginRequestEntity loginRequestEntity) async {
     // request to server
+    var result = await SignInRepo.login(params: loginRequestEntity);
+    if (result.code == 200) {
+      // local storage
+      try {
+        // var navigator = Navigator.of(ref.context);
+        // save user info
+        Global.storageService.setString(
+            AppConstants.STORAGE_USER_PROFILE_KEY, jsonEncode(result.data));
+        Global.storageService.setString(
+            AppConstants.STORAGE_USER_TOKEN_KEY, result.data!.access_token!);
 
-    // local storage
-    try {
-      // var navigator = Navigator.of(ref.context);
-      // save user info
-      Global.storageService
-          .setString(AppConstants.STORAGE_USER_PROFILE_KEY, jsonEncode({
-        "name": "user_name", "email": "user_mail@gmail.com", "age": 27
-      }));
-      Global.storageService
-          .setString(AppConstants.STORAGE_USER_TOKEN_KEY, "123456");
-
-      navKey.currentState?.pushNamedAndRemoveUntil("/application", (route) => false);
-      // navigator.push(MaterialPageRoute(
-      //     builder: (BuildContext context) => Scaffold(
-      //           appBar: AppBar(),
-      //           body: const Application(),
-      //         )));
-      // navigator.pushNamed("/application");
-    } catch (e) {
-      if (kDebugMode) {
-        print(e.toString());
+        navKey.currentState
+            ?.pushNamedAndRemoveUntil("/application", (route) => false);
+        // navigator.push(MaterialPageRoute(
+        //     builder: (BuildContext context) => Scaffold(
+        //           appBar: AppBar(),
+        //           body: const Application(),
+        //         )));
+        // navigator.pushNamed("/application");
+      } catch (e) {
+        if (kDebugMode) {
+          print(e.toString());
+        }
       }
+      // redirect
+
+    } else {
+      toastInfo("Login error");
     }
 
-    // redirect
   }
 }

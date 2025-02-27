@@ -46,10 +46,12 @@ class _SignUpState extends ConsumerState<SignUp> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         SizedBox(height: 30.h),
-                        Center(
-                            child: text16Normal(
+                        const Center(
+                            child: TextNormal(
                                 text:
-                                    'Enter your details below & free sign up')),
+                                    'Enter your details below & free sign up',
+                                color: AppColors.primarySecondaryElementText,
+                                fontSize: 16)),
                         SizedBox(
                           height: 50.h,
                         ),
@@ -99,7 +101,7 @@ class _SignUpState extends ConsumerState<SignUp> {
                         // forgot pw link
                         Container(
                             margin: EdgeInsets.only(left: 25.w),
-                            child: text14Normal(
+                            child: const TextNormal(
                                 text:
                                     'By creating an account you are agreeing with our terms and conditions')),
                         SizedBox(height: 100.h),

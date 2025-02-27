@@ -1,6 +1,8 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:e_learning_app/common/utils/app_color.dart';
 import 'package:e_learning_app/common/utils/image_resources.dart';
+import 'package:e_learning_app/common/widgets/app_box_decoration.dart';
+import 'package:e_learning_app/common/widgets/image_widgets.dart';
 import 'package:e_learning_app/common/widgets/text_widgets.dart';
 import 'package:e_learning_app/features/home/controller/home_controller.dart';
 import 'package:e_learning_app/global.dart';
@@ -14,10 +16,8 @@ class HelloText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: text24Normal(
-          text: "Hello, ",
-          color: AppColors.primaryThirdElementText,
-          fontWeight: FontWeight.bold),
+      child: const TextNormal(
+          text: "Hello, ", fontWeight: FontWeight.bold, fontSize: 24),
     );
   }
 }
@@ -28,10 +28,11 @@ class UserName extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: text24Normal(
-          text: Global.storageService
-              .getUserProfile().name!,
-          fontWeight: FontWeight.bold),
+      child: TextNormal(
+          text: Global.storageService.getUserProfile().name!,
+          color: AppColors.primaryText,
+          fontWeight: FontWeight.bold,
+          fontSize: 24),
     );
   }
 }
@@ -81,11 +82,106 @@ class HomeBanner extends StatelessWidget {
 
 Widget bannerContainer({required String imagePath}) {
   return Container(
-  width: 325.w,
-  height: 140.h,
-  decoration: BoxDecoration(
-    image: DecorationImage(image: AssetImage(imagePath),
-    fit: BoxFit.fill)
-  ),
-);
+    width: 325.w,
+    height: 140.h,
+    decoration: BoxDecoration(
+        image: DecorationImage(image: AssetImage(imagePath), fit: BoxFit.fill)),
+  );
+}
+
+AppBar homeAppBar() {
+  return AppBar(
+    title: Container(
+      margin: EdgeInsets.only(left: 7.w, right: 7.w),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          appImage(imagePath: ImageResources.menu, width: 18.w, height: 12.h),
+          GestureDetector(
+            child: const AppBoxDecorationImage(
+                imagePath: ImageResources.profileIcon),
+          )
+        ],
+      ),
+    ),
+  );
+}
+
+class HomeMenuBar extends StatelessWidget {
+  const HomeMenuBar({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        // see all course
+        Container(
+          margin: EdgeInsets.only(top: 15.h),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              const TextNormal(
+                  text: "Choose your course",
+                  fontSize: 16,
+                  color: AppColors.primaryText,
+                  fontWeight: FontWeight.bold),
+              GestureDetector(
+                child: const TextNormal(text: "See all", fontSize: 12),
+              )
+            ],
+          ),
+        ),
+        SizedBox(height: 15.h),
+        // course tab
+        Row(
+          children: [
+            Container(
+              decoration: appBoxDecoration(
+                  color: AppColors.primaryElement, radius: 7.w),
+              padding: EdgeInsets.only(
+                  left: 15.w, right: 15.w, top: 5.h, bottom: 5.h),
+              child: const TextNormal(
+                  text: "All",
+                  color: AppColors.primaryElementText,
+                  fontSize: 11),
+            ),
+            Container(
+              margin: EdgeInsets.only(left: 30.w),
+              child: const TextNormal(
+                  text: "Popular",
+                  color: AppColors.primaryThirdElementText,
+                  fontSize: 11),
+            ),
+            Container(
+              margin: EdgeInsets.only(left: 30.w),
+              child: const TextNormal(
+                  text: "Newest",
+                  color: AppColors.primaryThirdElementText,
+                  fontSize: 11),
+            )
+          ],
+        )
+      ],
+    );
+  }
+}
+
+class CourseItemGrid extends StatelessWidget {
+  const CourseItemGrid({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: GridView.builder(
+          physics: const ScrollPhysics(),
+          shrinkWrap: true,
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2, crossAxisSpacing: 40, mainAxisExtent: 40),
+          itemCount: 6,
+          itemBuilder: (_, int index) {
+            return appImage();
+          }),
+    );
+  }
 }
