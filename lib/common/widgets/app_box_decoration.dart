@@ -70,7 +70,7 @@ class AppBoxDecorationImage extends StatelessWidget {
         height: height,
         decoration: BoxDecoration(
             image: DecorationImage(
-                fit: BoxFit.fitHeight, image: AssetImage(imagePath)),
+                fit: BoxFit.fitHeight, image: NetworkImage(imagePath)),
             borderRadius: BorderRadius.circular(20.w)));
   }
 }

@@ -1,5 +1,6 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:e_learning_app/common/utils/app_color.dart';
+import 'package:e_learning_app/common/utils/app_constants.dart';
 import 'package:e_learning_app/common/utils/image_resources.dart';
 import 'package:e_learning_app/common/widgets/app_box_decoration.dart';
 import 'package:e_learning_app/common/widgets/image_widgets.dart';
@@ -89,7 +90,9 @@ Widget bannerContainer({required String imagePath}) {
   );
 }
 
-AppBar homeAppBar() {
+AppBar homeAppBar(WidgetRef ref) {
+  var profileState = ref.watch(homeUserProfileProvider);
+
   return AppBar(
     title: Container(
       margin: EdgeInsets.only(left: 7.w, right: 7.w),
@@ -97,10 +100,16 @@ AppBar homeAppBar() {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           appImage(imagePath: ImageResources.menu, width: 18.w, height: 12.h),
-          GestureDetector(
-            child: const AppBoxDecorationImage(
-                imagePath: ImageResources.profileIcon),
-          )
+          profileState.when(
+              data: (value) => GestureDetector(
+                    child: AppBoxDecorationImage(
+                        imagePath: "${AppConstants.SERVER_API_URL}${value.avatar!}"),
+                  ),
+              error: (error, stack) => appImage(
+                  imagePath: ImageResources.profileIcon,
+                  width: 18.w,
+                  height: 12.h),
+              loading: () => Container())
         ],
       ),
     ),

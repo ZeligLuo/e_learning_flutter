@@ -69,6 +69,7 @@ class SignInController {
         loginRequestEntity.email = email;
         loginRequestEntity.open_id = id;
         loginRequestEntity.type = 1;
+
         asyncPostAllData(loginRequestEntity);
       } else {
         toastInfo("Login error!");

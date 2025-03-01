@@ -1,6 +1,10 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
+import 'package:dio/io.dart';
 import 'package:e_learning_app/common/utils/app_constants.dart';
 import 'package:e_learning_app/global.dart';
+import 'package:flutter/foundation.dart';
 
 class HttpUtil {
   late Dio dio;
@@ -22,14 +26,28 @@ class HttpUtil {
 
     dio = Dio(options);
 
+    // dio.httpClientAdapter = IOHttpClientAdapter(
+    //     createHttpClient: (){
+    //       HttpClient client = HttpClient();
+    //       client.badCertificateCallback = (X509Certificate cert, String host, int port) => true;
+    //       return client;
+    //     }
+    // );
+
     dio.interceptors.add(InterceptorsWrapper(onRequest: (options, handler) {
-      // print('request data: ${options.data}');
+        if (kDebugMode) {
+          print('request data: ${options.data}');
+        }
       return handler.next(options);
     }, onResponse: (response, handler) {
-      // print('response data: ${response.data}');
+        if (kDebugMode) {
+          print('response data: ${response.data}');
+        }
       return handler.next(response);
     }, onError: (DioException error, handler) {
-      // print('error data: $error');
+        if (kDebugMode) {
+          print('error data: $error');
+        }
       ErrorEntity errorInfo = createErrorEntity(error);
       onError(errorInfo);
     }));
