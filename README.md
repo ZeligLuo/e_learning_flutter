@@ -12,5 +12,6 @@ Example view:
   <img title="view-1" alt="Welcome Screen" src="/assets/design/d1.png">
   <img title="view-2" alt="Login Screen" src="/assets/design/d2.png">
   <img title="view-3" alt="Home Screen" src="/assets/design/d3.png">
+  <img title="view-3" alt="Course Detail Screen" src="/assets/design/d5.png">
 </div>
 
