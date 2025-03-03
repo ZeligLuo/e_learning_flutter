@@ -5,7 +5,7 @@ A new Flutter project.
 ## Getting Started
 
 Backend PHP: https://github.com/ZeligLuo/flutter-elearning-app-api.git
-How to start backend server with local host:
+<br>How to start backend server with local host:
 - Download and open xampp (Then start Apache and MySQL)
 - In the Laravel-admin source code, run CLI 'php artisan serve'
 
