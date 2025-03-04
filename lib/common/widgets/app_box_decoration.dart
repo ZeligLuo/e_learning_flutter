@@ -1,14 +1,17 @@
+import 'package:e_learning_app/common/models/course_entities.dart';
 import 'package:e_learning_app/common/utils/app_color.dart';
 import 'package:e_learning_app/common/utils/image_resources.dart';
+import 'package:e_learning_app/common/widgets/text_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-BoxDecoration appBoxDecoration(
-    {Color color = AppColors.primaryElement,
-    double radius = 15,
-    double sR = 1,
-    double bR = 2,
-    BoxBorder? boxBorder,}) {
+BoxDecoration appBoxDecoration({
+  Color color = AppColors.primaryElement,
+  double radius = 15,
+  double sR = 1,
+  double bR = 2,
+  BoxBorder? boxBorder,
+}) {
   return BoxDecoration(
       color: color,
       borderRadius: BorderRadius.circular(radius),
@@ -56,21 +59,59 @@ class AppBoxDecorationImage extends StatelessWidget {
   final double width;
   final double height;
   final String imagePath;
+  final BoxFit boxFit;
+  final CourseItem? courseItem;
+  final Function()? func;
 
   const AppBoxDecorationImage(
       {super.key,
       this.width = 40,
       this.height = 40,
-      this.imagePath = ImageResources.defaultIcon});
+      this.imagePath = ImageResources.defaultIcon,
+      this.boxFit = BoxFit.fitHeight,
+      this.courseItem,
+      this.func});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return GestureDetector(
+      onTap: () {
+        func;
+      },
+      child: Container(
         width: width,
         height: height,
         decoration: BoxDecoration(
             image: DecorationImage(
-                fit: BoxFit.fitHeight, image: NetworkImage(imagePath)),
-            borderRadius: BorderRadius.circular(20.w)));
+                fit: boxFit, image: NetworkImage(imagePath), opacity: 0.9),
+            borderRadius: BorderRadius.circular(20.w)),
+        child: courseItem == null
+            ? Container()
+            : Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    margin: EdgeInsets.only(left: 20.w),
+                    child: FadeText(
+                      text: courseItem!.name!,
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(left: 20.w, bottom: 20.h),
+                    child: FadeText(
+                      text: "${courseItem!.lesson_num!.toString()} Lessons",
+                      color: AppColors.primaryThirdElementText,
+                    ),
+                  )
+                ],
+              ),
+
+        // child: ClipRRect(
+        //     borderRadius: BorderRadius.circular(20.w),
+        //   child: Image.network(imagePath, fit: boxFit, height: height, width: width)
+        // )
+      ),
+    );
   }
 }

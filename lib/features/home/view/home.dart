@@ -30,46 +30,50 @@ class _HomeState extends ConsumerState<Home> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: homeAppBar(ref),
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 25.w),
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(height: 20.h),
-              const HelloText(),
-              const UserName(),
-              SizedBox(height: 20.h),
-              searchBar(),
-              SizedBox(height: 20.h),
-              HomeBanner(controller: _controller, ref: ref),
-              const HomeMenuBar(),
-              // CustomScrollView(
-              //   physics: const ScrollPhysics(),
-              //   shrinkWrap: true,
-              //   slivers: [
-              //     SliverPadding(
-              //       padding: EdgeInsets.all(20),
-              //       sliver: SliverGrid.count(
-              //         crossAxisCount: 2,
-              //         crossAxisSpacing: 10,
-              //         children: [
-              //           Text("data"),
-              //           Text("data"),
-              //           Text("data"),
-              //           Text("data"),
-              //           Text("data")
-              //         ],
-              //       ),
-              //     )
-              //   ],
-              // )
-              const CourseItemGrid()
-            ],
+      body: RefreshIndicator(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 25.w),
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(height: 20.h),
+                  const HelloText(),
+                  const UserName(),
+                  SizedBox(height: 20.h),
+                  searchBar(),
+                  SizedBox(height: 20.h),
+                  HomeBanner(controller: _controller, ref: ref),
+                  const HomeMenuBar(),
+                  // CustomScrollView(
+                  //   physics: const ScrollPhysics(),
+                  //   shrinkWrap: true,
+                  //   slivers: [
+                  //     SliverPadding(
+                  //       padding: EdgeInsets.all(20),
+                  //       sliver: SliverGrid.count(
+                  //         crossAxisCount: 2,
+                  //         crossAxisSpacing: 10,
+                  //         children: [
+                  //           Text("data"),
+                  //           Text("data"),
+                  //           Text("data"),
+                  //           Text("data"),
+                  //           Text("data")
+                  //         ],
+                  //       ),
+                  //     )
+                  //   ],
+                  // )
+                  CourseItemGrid(ref: ref)
+                ],
+              ),
+            ),
           ),
-        ),
-      ),
+          onRefresh: () {
+            return ref.refresh(homeCourseListProvider.notifier).fetchCourseList();
+          }),
     );
   }
 }

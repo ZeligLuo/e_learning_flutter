@@ -103,7 +103,8 @@ AppBar homeAppBar(WidgetRef ref) {
           profileState.when(
               data: (value) => GestureDetector(
                     child: AppBoxDecorationImage(
-                        imagePath: "${AppConstants.SERVER_API_URL}${value.avatar!}"),
+                        imagePath:
+                            "${AppConstants.SERVER_API_URL}${value.avatar!}"),
                   ),
               error: (error, stack) => appImage(
                   imagePath: ImageResources.profileIcon,
@@ -177,20 +178,52 @@ class HomeMenuBar extends StatelessWidget {
 }
 
 class CourseItemGrid extends StatelessWidget {
-  const CourseItemGrid({super.key});
+  final WidgetRef ref;
+
+  const CourseItemGrid({super.key, required this.ref});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: GridView.builder(
-          physics: const ScrollPhysics(),
-          shrinkWrap: true,
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2, crossAxisSpacing: 40, mainAxisExtent: 40),
-          itemCount: 6,
-          itemBuilder: (_, int index) {
-            return appImage();
-          }),
+    final courseState = ref.watch(homeCourseListProvider);
+
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: 18.h, horizontal: 0),
+      child: courseState.when(
+          data: (data) => GridView.builder(
+              physics: const ScrollPhysics(),
+              shrinkWrap: true,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 15,
+                  mainAxisSpacing: 15,
+                  childAspectRatio: 1.5),
+              itemCount: data?.length,
+              itemBuilder: (_, int index) {
+                return AppBoxDecorationImage(
+                  imagePath:
+                      "${AppConstants.IMAGE_UPLOADS_PATH}${data![index].thumbnail!}",
+                  boxFit: BoxFit.cover,
+                  courseItem: data[index],
+                  func: () {
+                    MaterialPageRoute(
+                      builder: (BuildContext context) {
+                        return Scaffold(
+                          appBar: AppBar(),
+                          body: Center(
+                            child: Text(data[index].id.toString()),
+                          ),
+                        );
+                      }
+                    );
+                  },
+                );
+              }),
+          error: (error, stackTrace) {
+            // print(error.toString());
+            // print(stackTrace.toString());
+            return const Center(child: Text("Error"));
+          },
+          loading: () => const Center(child: Text("Loading..."))),
     );
   }
 }
