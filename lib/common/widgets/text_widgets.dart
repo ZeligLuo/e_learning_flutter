@@ -3,23 +3,24 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TextNormal extends StatelessWidget {
-  final String text;
+  final String? text;
   final Color color;
   final FontWeight fontWeight;
   final double fontSize;
+  final TextAlign textAlign;
 
   const TextNormal(
       {super.key,
       this.text = "",
       this.color = AppColors.primaryThirdElementText,
       this.fontSize = 14,
-      this.fontWeight = FontWeight.normal});
+      this.fontWeight = FontWeight.normal, this.textAlign = TextAlign.center});
 
   @override
   Widget build(BuildContext context) {
     return Text(
-      text,
-      textAlign: TextAlign.start,
+      text!,
+      textAlign: textAlign,
       style: TextStyle(
           color: color, fontSize: fontSize.sp, fontWeight: fontWeight),
     );

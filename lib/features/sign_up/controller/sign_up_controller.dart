@@ -1,6 +1,6 @@
 import 'package:e_learning_app/common/global_loader/global_loader.dart';
 import 'package:e_learning_app/common/widgets/popup_messages.dart';
-import 'package:e_learning_app/features/sign_up/provider/register_notifier.dart';
+import 'package:e_learning_app/features/sign_up/controller/register_notifier.dart';
 import 'package:e_learning_app/features/sign_up/repo/sign_up_repo.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';

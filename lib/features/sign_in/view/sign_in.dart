@@ -6,7 +6,7 @@ import 'package:e_learning_app/common/widgets/app_text_fields.dart';
 import 'package:e_learning_app/common/widgets/button_widgets.dart';
 import 'package:e_learning_app/common/widgets/text_widgets.dart';
 import 'package:e_learning_app/features/sign_in/controller/sign_in_controller.dart';
-import 'package:e_learning_app/features/sign_in/provider/sign_in_notifier.dart';
+import 'package:e_learning_app/features/sign_in/controller/sign_in_notifier.dart';
 import 'package:e_learning_app/features/sign_in/view/widgets/sign_in_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

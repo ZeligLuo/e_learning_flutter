@@ -99,14 +99,14 @@ AppBar homeAppBar(WidgetRef ref) {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          appImage(imagePath: ImageResources.menu, width: 18.w, height: 12.h),
+          AppImage(imagePath: ImageResources.menu, width: 18.w, height: 12.h),
           profileState.when(
               data: (value) => GestureDetector(
                     child: AppBoxDecorationImage(
                         imagePath:
                             "${AppConstants.SERVER_API_URL}${value.avatar!}"),
                   ),
-              error: (error, stack) => appImage(
+              error: (error, stack) => AppImage(
                   imagePath: ImageResources.profileIcon,
                   width: 18.w,
                   height: 12.h),
@@ -205,16 +205,10 @@ class CourseItemGrid extends StatelessWidget {
                   boxFit: BoxFit.cover,
                   courseItem: data[index],
                   func: () {
-                    MaterialPageRoute(
-                      builder: (BuildContext context) {
-                        return Scaffold(
-                          appBar: AppBar(),
-                          body: Center(
-                            child: Text(data[index].id.toString()),
-                          ),
-                        );
-                      }
-                    );
+                    // print(data[index].id.toString());
+                    Navigator.of(context).pushNamed("/course_detail", arguments: {
+                      "id":data[index].id!
+                    });
                   },
                 );
               }),

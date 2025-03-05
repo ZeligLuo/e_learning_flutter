@@ -4,7 +4,7 @@ import 'package:e_learning_app/common/models/user.dart';
 import 'package:e_learning_app/common/services/http_util.dart';
 import 'package:e_learning_app/common/utils/app_constants.dart';
 import 'package:e_learning_app/common/widgets/popup_messages.dart';
-import 'package:e_learning_app/features/sign_in/provider/sign_in_notifier.dart';
+import 'package:e_learning_app/features/sign_in/controller/sign_in_notifier.dart';
 import 'package:e_learning_app/features/sign_in/repo/sign_in_repo.dart';
 import 'package:e_learning_app/global.dart';
 import 'package:e_learning_app/main.dart';

@@ -1,4 +1,4 @@
-import 'package:e_learning_app/features/sign_up/provider/register_state.dart';
+import 'package:e_learning_app/features/sign_up/controller/register_state.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'register_notifier.g.dart';

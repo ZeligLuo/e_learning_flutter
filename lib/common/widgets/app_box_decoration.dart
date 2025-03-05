@@ -75,9 +75,7 @@ class AppBoxDecorationImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        func;
-      },
+      onTap: func,
       child: Container(
         width: width,
         height: height,

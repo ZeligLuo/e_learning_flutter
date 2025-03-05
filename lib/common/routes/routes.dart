@@ -1,5 +1,6 @@
 import 'package:e_learning_app/common/routes/app_routes_name.dart';
 import 'package:e_learning_app/features/application/view/application.dart';
+import 'package:e_learning_app/features/course_detail/view/course_detail.dart';
 import 'package:e_learning_app/features/home/view/home.dart';
 import 'package:e_learning_app/features/sign_in/view/sign_in.dart';
 import 'package:e_learning_app/features/sign_up/view/sign_up.dart';
@@ -14,7 +15,8 @@ class AppPages {
       RouteEntity(path: AppRoutesName.SIGN_IN, page: const SignIn()),
       RouteEntity(path: AppRoutesName.REGISTER, page: const SignUp()),
       RouteEntity(path: AppRoutesName.APPLICATION, page: const Application()),
-      RouteEntity(path: AppRoutesName.HOME, page: const Home())
+      RouteEntity(path: AppRoutesName.HOME, page: const Home()),
+      RouteEntity(path: AppRoutesName.COURSE_DETAIL, page: const CourseDetail())
     ];
   }
 

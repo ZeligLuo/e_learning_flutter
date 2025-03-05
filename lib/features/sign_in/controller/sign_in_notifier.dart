@@ -1,4 +1,4 @@
-import 'package:e_learning_app/features/sign_in/provider/sign_in_state.dart';
+import 'package:e_learning_app/features/sign_in/controller/sign_in_state.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 // StateNotifier stores state
