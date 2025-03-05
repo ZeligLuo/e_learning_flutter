@@ -133,27 +133,27 @@ class CourseDetailIncludes extends StatelessWidget {
           children: [
             const TextNormal(
               fontSize: 14,
-              text: "Course includes",
+              text: "Course Includes",
               color: AppColors.primaryText,
               fontWeight: FontWeight.bold,
             ),
             SizedBox(height: 10.h),
             CourseInfo(
               imagePath: ImageResources.videoDetailIcon,
-              length: courseItem.video_len.toString(),
+              quantity: courseItem.video_len,
               infoText: "hours video",
             ),
             SizedBox(height: 15.h),
             CourseInfo(
               imagePath: ImageResources.fileIcon,
-              length: courseItem.lesson_num.toString(),
+              quantity: courseItem.lesson_num,
               infoText: "lessons",
             ),
             SizedBox(height: 15.h),
             CourseInfo(
               imagePath: ImageResources.downloadIcon,
-              length: courseItem.down_num.toString(),
-              infoText: "downloads",
+              quantity: courseItem.down_num,
+              infoText: "materials to download",
             )
           ],
         ));
@@ -162,13 +162,13 @@ class CourseDetailIncludes extends StatelessWidget {
 
 class CourseInfo extends StatelessWidget {
   final String imagePath;
-  final String? length;
+  final int? quantity;
   final String? infoText;
 
   const CourseInfo(
       {super.key,
       required this.imagePath,
-      this.length,
+      this.quantity,
       this.infoText = "number"});
 
   @override
@@ -184,11 +184,85 @@ class CourseInfo extends StatelessWidget {
           margin: EdgeInsets.only(left: 10.w),
           child: TextNormal(
             fontSize: 11,
-            text: length == null ? "0 $infoText" : "$length $infoText",
+            text: quantity == null ? "0 $infoText" : "$quantity $infoText",
             color: AppColors.primarySecondaryElementText,
           ),
         )
       ],
+    );
+  }
+}
+
+class LessonInfo extends StatelessWidget {
+  const LessonInfo({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.only(top: 15.h),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const TextNormal(
+            fontSize: 14,
+            text: "Lesson List",
+            color: AppColors.primaryText,
+            fontWeight: FontWeight.bold,
+          ),
+          SizedBox(height: 15.h),
+          Container(
+            width: 325.w,
+            height: 80.h,
+            decoration: appBoxDecoration(
+                color: const Color.fromRGBO(255, 255, 255, 1),
+                radius: 10,
+                sR: 2,
+                bR: 3),
+            child: InkWell(
+              onTap: () {},
+              child: Row(
+                children: [
+                  Container(
+                    margin: EdgeInsets.only(left: 10.w),
+                    child: AppBoxDecorationImage(
+                      imagePath:
+                          "${AppConstants.IMAGE_UPLOADS_PATH}default.png",
+                      width: 60.w,
+                      height: 60.h,
+                      boxFit: BoxFit.fill,
+                    ),
+                  ),
+                  SizedBox(width: 10.w),
+                  const Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      TextNormal(
+                        fontSize: 13,
+                        color: AppColors.primaryText,
+                        fontWeight: FontWeight.bold,
+                        text: "First lesson",
+                      ),
+                      TextNormal(
+                        fontSize: 11,
+                        color: AppColors.primaryThirdElementText,
+                        fontWeight: FontWeight.bold,
+                        text: "Description",
+                      )
+                    ],
+                  ),
+                  Expanded(child: Container()),
+                  AppImage(
+                    imagePath: ImageResources.arrowRightIcon,
+                    width: 25.w,
+                    height: 25.h,
+                  )
+                ],
+              ),
+            ),
+          )
+        ],
+      ),
     );
   }
 }

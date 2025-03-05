@@ -9,6 +9,7 @@ class ImageResources {
   static const String peopleIcon = '$_iconBase/people.png';
   static const String starIcon = '$_iconBase/star.png';
   static const String lockIcon = '$_iconBase/lock.png';
+  static const String arrowRightIcon = '$_iconBase/arrow_right.png';
   static const String homeIcon = '$_iconBase/home.png';
   static const String searchIcon = '$_iconBase/search.png';
   static const String searchIcon2 = '$_iconBase/search2.png';

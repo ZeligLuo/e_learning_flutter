@@ -40,19 +40,22 @@ class _CourseDetailState extends ConsumerState<CourseDetail> {
           data: (data) => data == null
               ? const SizedBox()
               : Padding(
-                padding: EdgeInsets.only(left: 25.w, right: 25.w),
-                child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      CourseDetailThumbnail(courseItem: data),
-                      CourseDetailIconText(courseItem: data),
-                      CourseDetailDescription(courseItem: data),
-                      const CourseDetailBuyButton(),
-                      CourseDetailIncludes(courseItem: data)
-                    ],
+                  padding: EdgeInsets.only(left: 25.w, right: 25.w),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        CourseDetailThumbnail(courseItem: data),
+                        CourseDetailIconText(courseItem: data),
+                        CourseDetailDescription(courseItem: data),
+                        const CourseDetailBuyButton(),
+                        CourseDetailIncludes(courseItem: data),
+                        LessonInfo()
+                      ],
+                    ),
                   ),
-              ),
+                ),
           error: (error, traceStack) => const Text("Error loading data"),
           loading: () => const Center(child: CircularProgressIndicator())),
     );

@@ -21,7 +21,7 @@ class Application extends ConsumerWidget {
             bottomNavigationBar: Container(
               width: 375.w,
               height: 58.h,
-              decoration: appBoxDecorationWithRadius(),
+              decoration: appBoxDecorationHorizontalRadius(),
               child: BottomNavigationBar(
                 currentIndex: index,
                 onTap: (value) {

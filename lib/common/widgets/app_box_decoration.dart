@@ -25,7 +25,7 @@ BoxDecoration appBoxDecoration({
       ]);
 }
 
-BoxDecoration appBoxDecorationWithRadius(
+BoxDecoration appBoxDecorationHorizontalRadius(
     {Color color = AppColors.primaryElement,
     double radius = 15,
     double sR = 1,

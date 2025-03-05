@@ -14,7 +14,7 @@ class TextNormal extends StatelessWidget {
       this.text = "",
       this.color = AppColors.primaryThirdElementText,
       this.fontSize = 14,
-      this.fontWeight = FontWeight.normal, this.textAlign = TextAlign.center});
+      this.fontWeight = FontWeight.normal, this.textAlign = TextAlign.start});
 
   @override
   Widget build(BuildContext context) {
