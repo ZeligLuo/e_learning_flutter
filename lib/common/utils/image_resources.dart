@@ -20,6 +20,9 @@ class ImageResources {
   static const String banner2 = '$_iconBase/Image(1).png';
   static const String banner3 = '$_iconBase/Image(2).png';
   static const String menu = '$_iconBase/menu.png';
+  static const String videoDetailIcon = '$_iconBase/video_detail.png';
+  static const String downloadIcon = '$_iconBase/download_detail.png';
+  static const String fileIcon = '$_iconBase/file_detail.png';
 
   static const String reading = '$_imageBase/reading.png';
   static const String man = '$_imageBase/man.png';
