@@ -1,4 +1,5 @@
 import 'package:e_learning_app/common/models/course_entities.dart';
+import 'package:e_learning_app/common/models/lesson_entities.dart';
 import 'package:e_learning_app/common/utils/app_color.dart';
 import 'package:e_learning_app/common/utils/app_constants.dart';
 import 'package:e_learning_app/common/utils/image_resources.dart';
@@ -194,7 +195,9 @@ class CourseInfo extends StatelessWidget {
 }
 
 class LessonInfo extends StatelessWidget {
-  const LessonInfo({super.key});
+  final List<LessonItem> lessonItem;
+
+  const LessonInfo({super.key, required this.lessonItem});
 
   @override
   Widget build(BuildContext context) {
@@ -203,64 +206,75 @@ class LessonInfo extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const TextNormal(
-            fontSize: 14,
-            text: "Lesson List",
-            color: AppColors.primaryText,
-            fontWeight: FontWeight.bold,
-          ),
-          SizedBox(height: 15.h),
-          Container(
-            width: 325.w,
-            height: 80.h,
-            decoration: appBoxDecoration(
-                color: const Color.fromRGBO(255, 255, 255, 1),
-                radius: 10,
-                sR: 2,
-                bR: 3),
-            child: InkWell(
-              onTap: () {},
-              child: Row(
-                children: [
-                  Container(
-                    margin: EdgeInsets.only(left: 10.w),
-                    child: AppBoxDecorationImage(
-                      imagePath:
-                          "${AppConstants.IMAGE_UPLOADS_PATH}default.png",
-                      width: 60.w,
-                      height: 60.h,
-                      boxFit: BoxFit.fill,
+          lessonItem.isNotEmpty
+              ? const TextNormal(
+                  fontSize: 14,
+                  text: "Lesson List",
+                  color: AppColors.primaryText,
+                  fontWeight: FontWeight.bold,
+                )
+              : const SizedBox(),
+          SizedBox(height: 5.h),
+          ListView.builder(
+              shrinkWrap: true,
+              itemCount: lessonItem.length,
+              itemBuilder: (_, index) {
+                return Container(
+                  margin: EdgeInsets.only(top: 10.h),
+                  padding: EdgeInsets.symmetric(horizontal: 10.w),
+                  width: 325.w,
+                  height: 80.h,
+                  decoration: appBoxDecoration(
+                      color: const Color.fromRGBO(255, 255, 255, 1),
+                      radius: 10,
+                      sR: 2,
+                      bR: 3),
+                  child: InkWell(
+                    onTap: () {},
+                    child: Row(
+                      children: [
+                        Container(
+                          child: AppBoxDecorationImage(
+                            imagePath:
+                                "${AppConstants.IMAGE_UPLOADS_PATH}${lessonItem[index].thumbnail}",
+                            width: 50.w,
+                            height: 50.h,
+                            boxFit: BoxFit.fill,
+                          ),
+                        ),
+                        SizedBox(width: 10.w),
+                        Expanded(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              TextNormal(
+                                fontSize: 13,
+                                color: AppColors.primaryText,
+                                fontWeight: FontWeight.bold,
+                                text: lessonItem[index].name,
+                              ),
+                              TextNormal(
+                                fontSize: 11,
+                                color: AppColors.primaryThirdElementText,
+                                fontWeight: FontWeight.bold,
+                                text: lessonItem[index].description!,
+                                maxLines: 1,
+                                textOverflow: TextOverflow.clip,
+                              )
+                            ],
+                          ),
+                        ),
+                        AppImage(
+                          imagePath: ImageResources.arrowRightIcon,
+                          width: 25.w,
+                          height: 25.h,
+                        )
+                      ],
                     ),
                   ),
-                  SizedBox(width: 10.w),
-                  const Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      TextNormal(
-                        fontSize: 13,
-                        color: AppColors.primaryText,
-                        fontWeight: FontWeight.bold,
-                        text: "First lesson",
-                      ),
-                      TextNormal(
-                        fontSize: 11,
-                        color: AppColors.primaryThirdElementText,
-                        fontWeight: FontWeight.bold,
-                        text: "Description",
-                      )
-                    ],
-                  ),
-                  Expanded(child: Container()),
-                  AppImage(
-                    imagePath: ImageResources.arrowRightIcon,
-                    width: 25.w,
-                    height: 25.h,
-                  )
-                ],
-              ),
-            ),
-          )
+                );
+              })
         ],
       ),
     );
