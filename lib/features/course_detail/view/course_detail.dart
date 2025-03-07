@@ -65,7 +65,7 @@ class _CourseDetailState extends ConsumerState<CourseDetail> {
               lessonData.when(
                   data: (data) => data == null
                       ? const SizedBox()
-                      : LessonInfo(lessonItem: data),
+                      : LessonInfo(lessonItem: data, ref: ref),
                   error: (error, traceStack) =>
                       const Text("Error loading lesson data"),
                   loading: () => SizedBox(

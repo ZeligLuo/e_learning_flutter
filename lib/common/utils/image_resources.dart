@@ -14,6 +14,9 @@ class ImageResources {
   static const String searchIcon = '$_iconBase/search.png';
   static const String searchIcon2 = '$_iconBase/search2.png';
   static const String playIcon = '$_iconBase/play-circle.png';
+  static const String pauseIcon = '$_iconBase/pause.png';
+  static const String nextIcon = '$_iconBase/rewind-right.png';
+  static const String prevIcon = '$_iconBase/rewind-left.png';
   static const String messageIcon = '$_iconBase/message-circle.png';
   static const String profileIcon = '$_iconBase/person2.png';
   static const String searchBtnIcon = '$_iconBase/options.png';

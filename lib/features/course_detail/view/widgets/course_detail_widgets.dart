@@ -7,7 +7,9 @@ import 'package:e_learning_app/common/widgets/app_box_decoration.dart';
 import 'package:e_learning_app/common/widgets/button_widgets.dart';
 import 'package:e_learning_app/common/widgets/image_widgets.dart';
 import 'package:e_learning_app/common/widgets/text_widgets.dart';
+import 'package:e_learning_app/features/lesson_detail/controller/lesson_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CourseDetailThumbnail extends StatelessWidget {
@@ -196,8 +198,9 @@ class CourseInfo extends StatelessWidget {
 
 class LessonInfo extends StatelessWidget {
   final List<LessonItem> lessonItem;
+  final WidgetRef ref;
 
-  const LessonInfo({super.key, required this.lessonItem});
+  const LessonInfo({super.key, required this.lessonItem, required this.ref});
 
   @override
   Widget build(BuildContext context) {
@@ -230,7 +233,11 @@ class LessonInfo extends StatelessWidget {
                       sR: 2,
                       bR: 3),
                   child: InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      ref.watch(LessonDetailControllerProvider(index: lessonItem[index].id!));
+                      Navigator.of(context).pushNamed("/lesson_detail",
+                          arguments: {"id": lessonItem[index].id!});
+                    },
                     child: Row(
                       children: [
                         Container(
