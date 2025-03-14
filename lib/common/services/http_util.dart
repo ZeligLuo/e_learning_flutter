@@ -1,7 +1,5 @@
-import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:dio/io.dart';
 import 'package:e_learning_app/common/utils/app_constants.dart';
 import 'package:e_learning_app/global.dart';
 import 'package:flutter/foundation.dart';
@@ -18,14 +16,15 @@ class HttpUtil {
   HttpUtil._internal() {
     BaseOptions options = BaseOptions(
         baseUrl: AppConstants.SERVER_API_URL,
-        connectTimeout: const Duration(seconds: 5),
-        receiveTimeout: const Duration(seconds: 5),
+        connectTimeout: const Duration(seconds: 10),
+        receiveTimeout: const Duration(seconds: 10),
         headers: {},
         contentType: "application/json: charset=utf-8",
         responseType: ResponseType.json);
 
     dio = Dio(options);
 
+    // pass Dio cert
     // dio.httpClientAdapter = IOHttpClientAdapter(
     //     createHttpClient: (){
     //       HttpClient client = HttpClient();

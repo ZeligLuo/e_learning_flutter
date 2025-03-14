@@ -7,7 +7,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'course_controller.g.dart';
 
 @riverpod
-Future<CourseItem?> courseDetailController(CourseDetailControllerRef ref,
+Future<CourseItem?> courseDetailController(Ref ref,
     {required int index}) async {
   CourseRequestEntity courseRequestEntity = CourseRequestEntity();
   courseRequestEntity.id = index;
@@ -26,7 +26,7 @@ Future<CourseItem?> courseDetailController(CourseDetailControllerRef ref,
 
 @riverpod
 Future<List<LessonItem>?> courseLessonListController(
-    CourseLessonListControllerRef ref,
+    Ref ref,
     {required int index}) async {
   LessonRequestEntity lessonRequestEntity = LessonRequestEntity();
   lessonRequestEntity.id = index;

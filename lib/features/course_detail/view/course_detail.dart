@@ -1,10 +1,4 @@
-import 'package:e_learning_app/common/utils/app_color.dart';
-import 'package:e_learning_app/common/utils/app_constants.dart';
-import 'package:e_learning_app/common/utils/image_resources.dart';
 import 'package:e_learning_app/common/widgets/app_bar.dart';
-import 'package:e_learning_app/common/widgets/app_box_decoration.dart';
-import 'package:e_learning_app/common/widgets/image_widgets.dart';
-import 'package:e_learning_app/common/widgets/text_widgets.dart';
 import 'package:e_learning_app/features/course_detail/controller/course_controller.dart';
 import 'package:e_learning_app/features/course_detail/view/widgets/course_detail_widgets.dart';
 import 'package:flutter/material.dart';

@@ -1,5 +1,4 @@
 import 'package:e_learning_app/common/routes/routes.dart';
-import 'package:e_learning_app/common/services/http_util.dart';
 import 'package:e_learning_app/common/utils/app_styles.dart';
 import 'package:e_learning_app/global.dart';
 import 'package:flutter/material.dart';

@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'package:e_learning_app/common/global_loader/global_loader.dart';
 import 'package:e_learning_app/common/models/user.dart';
-import 'package:e_learning_app/common/services/http_util.dart';
 import 'package:e_learning_app/common/utils/app_constants.dart';
 import 'package:e_learning_app/common/widgets/popup_messages.dart';
 import 'package:e_learning_app/features/sign_in/controller/sign_in_notifier.dart';
@@ -13,7 +12,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
 class SignInController {
   // WidgetRef ref;

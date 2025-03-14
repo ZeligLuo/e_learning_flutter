@@ -53,7 +53,7 @@ class _SignInState extends ConsumerState<SignIn> {
                 children: [
                   // login options
                   thirdPartyLogin(),
-                  Center(
+                  const Center(
                       child: TextNormal(
                           text: 'Or use your email account to login',
                           color: AppColors.primarySecondaryElementText,

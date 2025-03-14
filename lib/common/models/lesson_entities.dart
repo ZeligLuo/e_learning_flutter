@@ -1,5 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-
 class LessonRequestEntity {
   int? id;
 
@@ -38,7 +36,7 @@ class LessonListResponseEntity {
 class LessonDetailResponseEntity {
   int? code;
   String? msg;
-  List<LessonVideoItem>? data;
+  List<LessonItem>? data;
 
   LessonDetailResponseEntity({
     this.code,
@@ -52,8 +50,8 @@ class LessonDetailResponseEntity {
         msg: json["msg"],
         data: json["data"] == null
             ? []
-            : List<LessonVideoItem>.from(
-                json["data"].map((x) => LessonVideoItem.fromJson(x))),
+            : List<LessonItem>.from(
+                json["data"].map((x) => LessonItem.fromJson(x))),
       );
 }
 
@@ -63,19 +61,19 @@ class LessonItem {
   String? description;
   String? thumbnail;
   int? id;
+  List<LessonVideoItem>? video;
 
-  LessonItem({
-    this.name,
-    this.description,
-    this.thumbnail,
-    this.id,
-  });
+  LessonItem(
+      {this.name, this.description, this.thumbnail, this.id, this.video});
 
   factory LessonItem.fromJson(Map<String, dynamic> json) => LessonItem(
         name: json["name"],
         description: json["description"],
         thumbnail: json["thumbnail"],
         id: json["id"],
+        video: json["video"] == null ? [] : List<LessonVideoItem>.from(
+          json["video"].map((x) => LessonVideoItem.fromJson(x))
+        )
       );
 
   Map<String, dynamic> toJson() => {
@@ -83,6 +81,7 @@ class LessonItem {
         "description": description,
         "thumbnail": thumbnail,
         "id": id,
+        "video": video?.map((x) => x.toJson()).toList()
       };
 }
 

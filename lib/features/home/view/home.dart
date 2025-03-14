@@ -1,5 +1,3 @@
-import 'package:e_learning_app/common/widgets/app_bar.dart';
-import 'package:e_learning_app/common/widgets/image_widgets.dart';
 import 'package:e_learning_app/common/widgets/search_widgets.dart';
 import 'package:e_learning_app/features/home/controller/home_controller.dart';
 import 'package:e_learning_app/features/home/view/widgets/home_widgets.dart';

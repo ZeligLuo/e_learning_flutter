@@ -1,6 +1,5 @@
 import 'package:e_learning_app/common/models/course_entities.dart';
 import 'package:e_learning_app/common/utils/app_color.dart';
-import 'package:e_learning_app/common/utils/app_constants.dart';
 import 'package:e_learning_app/common/utils/image_resources.dart';
 import 'package:e_learning_app/common/widgets/text_widgets.dart';
 import 'package:flutter/material.dart';
