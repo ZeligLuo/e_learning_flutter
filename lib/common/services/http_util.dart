@@ -1,5 +1,8 @@
 
+import 'dart:io';
+
 import 'package:dio/dio.dart';
+import 'package:dio/io.dart';
 import 'package:e_learning_app/common/utils/app_constants.dart';
 import 'package:e_learning_app/global.dart';
 import 'package:flutter/foundation.dart';
@@ -25,13 +28,13 @@ class HttpUtil {
     dio = Dio(options);
 
     // pass Dio cert
-    // dio.httpClientAdapter = IOHttpClientAdapter(
-    //     createHttpClient: (){
-    //       HttpClient client = HttpClient();
-    //       client.badCertificateCallback = (X509Certificate cert, String host, int port) => true;
-    //       return client;
-    //     }
-    // );
+    dio.httpClientAdapter = IOHttpClientAdapter(
+        createHttpClient: (){
+          HttpClient client = HttpClient();
+          client.badCertificateCallback = (X509Certificate cert, String host, int port) => true;
+          return client;
+        }
+    );
 
     dio.interceptors.add(InterceptorsWrapper(onRequest: (options, handler) {
         if (kDebugMode) {

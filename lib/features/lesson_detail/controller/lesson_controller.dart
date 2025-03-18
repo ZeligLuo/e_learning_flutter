@@ -1,5 +1,6 @@
 import 'package:e_learning_app/common/models/lesson_entities.dart';
 import 'package:e_learning_app/common/utils/app_constants.dart';
+import 'package:e_learning_app/common/widgets/popup_messages.dart';
 import 'package:e_learning_app/features/lesson_detail/repo/lesson_repo.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -94,8 +95,8 @@ class LessonDataController extends _$LessonDataController {
     videoPlayerController = VideoPlayerController.networkUrl(Uri.parse(vidUrl));
     var initializeVideoPlayerFuture =
         videoPlayerController?.initialize().then((value) {
-      videoPlayerController?.seekTo(
-          const Duration(seconds: 0)); // force video start at the beginning second
+      videoPlayerController?.seekTo(const Duration(
+          seconds: 0)); // force video start at the beginning second
       videoPlayerController?.play();
     });
 
@@ -103,5 +104,37 @@ class LessonDataController extends _$LessonDataController {
         initializeVideoPlayer: initializeVideoPlayerFuture,
         isPlay: true,
         url: vidUrl));
+  }
+}
+
+@riverpod
+class VideoIndexController extends _$VideoIndexController {
+  int build() {
+    return 0;
+  }
+
+  int playPrevAndNext(bool isPrevOrNext) {
+    var data = ref.watch(lessonDataControllerProvider).value!.lessonItem;
+
+    if (isPrevOrNext) {
+      state += 1;
+      if (state >= data.length) {
+        state = data.length - 1;
+        toastInfo("No next videos!");
+        return -1;
+      }
+    } else {
+      state -= 1;
+      if (state < 0) {
+        state = 0;
+        toastInfo("No previous video!");
+        return -1;
+      }
+    }
+
+    var videoUrl = data[state].url;
+    ref.read(lessonDataControllerProvider.notifier).playNextVideo(videoUrl!);
+
+    return state;
   }
 }

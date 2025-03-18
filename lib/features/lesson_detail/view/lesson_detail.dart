@@ -42,6 +42,7 @@ class _LessonDetailState extends ConsumerState<LessonDetail> {
     // var lessonData =
     //     ref.watch(LessonDetailControllerProvider(index: args.toInt()));
     var lessonData = ref.watch(lessonDataControllerProvider);
+    // ref.watch(videoIndexControllerProvider);
 
     return Scaffold(
       appBar: AppBar(),
@@ -110,6 +111,10 @@ class _LessonDetailState extends ConsumerState<LessonDetail> {
                                         .read(lessonDataControllerProvider
                                             .notifier)
                                         .playNextVideo(videoUrl!);
+                                    // var indexVal = ref.read(videoIndexControllerProvider.notifier).playPrevAndNext(false);
+                                    // if(indexVal == -1){
+                                    //   toastInfo("No previous videos!");
+                                    // }
                                   },
                                   child: AppImage(
                                       width: 24.w,
@@ -161,6 +166,10 @@ class _LessonDetailState extends ConsumerState<LessonDetail> {
                                         .read(lessonDataControllerProvider
                                             .notifier)
                                         .playNextVideo(videoUrl!);
+                                    // var indexVal = ref.read(videoIndexControllerProvider.notifier).playPrevAndNext(true);
+                                    // if(indexVal == -1){
+                                    //   toastInfo("No next videos!");
+                                    // }
                                   },
                                   child: AppImage(
                                       width: 24.w,

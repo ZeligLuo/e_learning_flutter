@@ -7,7 +7,7 @@ part of 'lesson_controller.dart';
 // **************************************************************************
 
 String _$lessonDetailControllerHash() =>
-    r'67165999e1ed510950db0e86ec795d6283a25186';
+    r'86f80aca06a0a905cd5ad52f8aa080ba77af562b';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -160,7 +160,7 @@ class _LessonDetailControllerProviderElement
 }
 
 String _$lessonDataControllerHash() =>
-    r'0a305d5ee72a6b51efcfd3b20faf69b049f1c3e1';
+    r'd5a88e5b7f9b4f18de6d456ac53f1713e39c5e35';
 
 /// See also [LessonDataController].
 @ProviderFor(LessonDataController)
@@ -176,5 +176,22 @@ final lessonDataControllerProvider = AutoDisposeAsyncNotifierProvider<
 );
 
 typedef _$LessonDataController = AutoDisposeAsyncNotifier<LessonVideo>;
+String _$videoIndexControllerHash() =>
+    r'dc0e7bfa53ee1e6bc1be7462f8273c11609be781';
+
+/// See also [VideoIndexController].
+@ProviderFor(VideoIndexController)
+final videoIndexControllerProvider =
+    AutoDisposeNotifierProvider<VideoIndexController, int>.internal(
+  VideoIndexController.new,
+  name: r'videoIndexControllerProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$videoIndexControllerHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef _$VideoIndexController = AutoDisposeNotifier<int>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
