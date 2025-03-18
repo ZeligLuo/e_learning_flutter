@@ -19,5 +19,5 @@ Example view:
 </div>
 
 <div style="margin: 0 auto; width: 100%;">
-  [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/CJKCepHfRm8/0.jpg)](https://www.youtube.com/watch?v=CJKCepHfRm8)
+  <h3>Demo: https://youtube.com/shorts/CJKCepHfRm8</h3>
 </div>
