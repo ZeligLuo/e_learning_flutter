@@ -8,7 +8,7 @@ Backend PHP: https://github.com/ZeligLuo/flutter-elearning-app-api.git
 <br>How to start backend server with local host:
 - Download and open xampp (Then start Apache and MySQL)
 - In the Laravel-admin source code, run CLI 'php artisan serve'
-- This backend using local host with http so the video cannot play yet. Can use ngrok to host a free domain of the local host then config the api url in app_constants.dart file.
+- This backend using local host with http so the video cannot play yet. Can use Ngrok to host a free domain then config the API_URL in app_constants.dart file in Flutter project and env file in PHP.
 
 Example view:
 
