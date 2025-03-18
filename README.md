@@ -19,5 +19,5 @@ Example view:
 </div>
 
 <div style="margin: 0 auto; width: 100%;">
-  <iframe width="400" height="800" src="https://www.youtube.com/embed/CJKCepHfRm8" title="Flutter E-learning App Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/CJKCepHfRm8/0.jpg)](https://www.youtube.com/watch?v=CJKCepHfRm8)
 </div>
